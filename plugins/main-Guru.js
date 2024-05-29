@@ -39,7 +39,7 @@ _______________________
  ♥️     ✍🏻ㅤ   📩     📤 
  *_ˡᶦᵏᵉ  ᶜᵒᵐᵐᵉⁿᵗ   ˢᵃᵛᵉ    ˢʰᵃʳᵉ_*
 `.trim())
-handler.help = ['gpguru']
+handler.help = ['gpexcel']
 handler.tags = ['main']
 handler.command = ['groups', 'groupguru', 'gugp', 'ggp', 'gpguru'] 
 
