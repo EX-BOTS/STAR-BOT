@@ -7,8 +7,8 @@ import axios from 'axios'
 
 
 global.owner = [
-  ['2347045035242', 'STAR-MD', true],
-  ['23433436666', 'Excel✔️', true], 
+  ['2347045035241', 'EXCEL', true],
+  ['23433436666', 'Excel', true], 
   [''] 
 ] //Number of owners
 
@@ -50,10 +50,10 @@ global.APIKeys = { // APIKey Here
 }
 
 // Sticker WM
-global.botname = 'sᴛᴀʀ-ᴍᴅ-ᴠ2'
+global.botname = '©STAR-MD-V2'
 global.premium = 'true'
-global.packname = 'sᴛᴀʀ┃ᴮᴼᵀ' 
-global.author = '@Excel' 
+global.packname = '©𝚂𝚃𝙰𝚁-𝙼𝙳' 
+global.author = '@𝙴𝚡𝚌𝚎𝚕' 
 global.menuvid = 'https://i.imgur.com/BPQbguA.mp4'
 global.Channel = 'https://whatsapp.com/channel/0029VaBcXo4JJhzW9c1uVD2X' 
 global.dygp = 'https://whatsapp.com/channel/0029VaBcXo4JJhzW9c1uVD2X'
@@ -65,7 +65,7 @@ global.thumb = fs.readFileSync('./STAR.jpg')
 
 
 
-global.wait = '*🕣 _STAR IS  LOADING WAIT..._*\n*▰▰▰▱▱▱▱▱⭐*'
+global.wait = '*🕒 _STAR IS  LOADING WAIT..._*\n*▰▰▰▱▱▱▱▱ 💫*'
 global.rwait = '🔜'
 global.dmoji = '⤵️'
 global.done = '☑️'
