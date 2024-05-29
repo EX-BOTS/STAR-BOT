@@ -1,38 +1,34 @@
 var handler = async (m, { conn, command, args, usedPrefix, DevMode }) => {
-  let fkontak = { 
-    "key": { 
-      "participants": "0@s.whatsapp.net", 
-      "remoteJid": "status@broadcast", 
-      "fromMe": false, 
-      "id": "𝐇𝐞𝐲" 
-    }, 
-    "message": { 
-      "contactMessage": { 
-        "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` 
-      }
-    }, 
-    "participant": "0@s.whatsapp.net" 
-  };
-  
-  let pp = './Assets/STAR-V2.jpg';
-  
-  // Define the developer variable
-  let developer = 'Excel Amadi'; // or retrieve this dynamically
-  
-  const cat = `*_STAR-V2_*
-  
-*_—🔰 𝘚𝘛𝘈𝘙-𝘔𝘋  𝐃𝐄𝐕 𝟏 wa.me/+2347045035241 %i'm here to help%_*
+  let owners = '2347045035241- *EXCEL*'; // Define owners variable
 
-*_—🔰 𝘚𝘛𝘈𝘙-𝘔𝘋  𝐃𝐄𝐕 2 wa.me/+2347045038687_*
-*---------------------*
+  let fkontak = {
+    "key": {
+      "participants": "0@s.whatsapp.net",
+      "remoteJid": "status@broadcast",
+      "fromMe": false,
+      "id": "hey"
+    },
+    "message": {
+      "contactMessage": {
+        "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
+      }
+    },
+    "participant": "0@s.whatsapp.net"
+  };
+
+  let pp = './Assets/STAR-V2.jpg';
+
+  const cat = `*_STAR-V2_*
+
+*_-MAIN DEV:-📡EXCEL:-wa.me/+2347045035241 %dont_contact_me%_*
 
 *_ᴛʜᴇ ᴍᴏᴅᴇʀᴀᴛᴏʀ_*
-*${developer}*`;
+*2347045035241`;
 
   await conn.sendFile(m.chat, pp, 'menuvid', cat, fkontak);
 };
 
-handler.help = ['devi','maindev'];
+handler.help = ['devi', 'maindev'];
 handler.tags = ['info'];
 handler.command = /^(maindev|devi)$/i;
 
