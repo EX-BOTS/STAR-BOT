@@ -14,11 +14,8 @@ _______________________
 Group2:
 _______________________
 https://chat.whatsapp.com/BYUKtcVPwa9AW48vepO3pw"
-_________________________
-
-*DEVELOPER*/
-
-1:__________________🔰 *MOD'S* 🔰_
+_______________________
+- DEVELOPER
 wa.me/2347045035241
 *AMADI EXCEL*
 _______________________
@@ -41,6 +38,6 @@ _______________________
 `.trim())
 handler.help = ['gpexcel']
 handler.tags = ['main']
-handler.command = ['groups', 'groupguru', 'gugp', 'ggp', 'gpguru'] 
+handler.command = ['groups', 'groupexcel', 'gpz', 'ggp', 'gpexcel'] 
 
 export default handler
