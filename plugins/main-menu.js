@@ -21,28 +21,18 @@ let tags = {
   'main': 'Main'
 }
 const defaultMenu = {
-before: `
- ╭━━━〔丂ㄒ卂尺〕━━━┈⊷
-┃✰│𝗨𝘀𝗲𝗿: %name    
-┃✰│𝗗𝗲𝘃:𝙴𝚇𝙲𝙴𝙻
-┃✰│𝗠𝗼𝗱𝗲: %mode
-┃✰│𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺: %platform
-┃✰│𝗧𝘆𝗽𝗲: 𝙽𝚘𝚍𝚎𝙹𝚜
-┃✰│𝗕𝗮𝗶𝗹𝗲𝘆𝘀: 𝙼𝚞𝚕𝚝𝚒 𝙳𝚎𝚟𝚒𝚌𝚎
-┃✰│𝗣𝗿𝗲𝗳𝗶𝘅: [ *%_p* ]
-┃✰│𝗨𝗽𝘁𝗶𝗺𝗲: %muptime
-┃✰│𝗗𝗮𝘁𝗮𝗯𝗮𝘀𝗲:  %totalreg
-┃✰│𝗖𝗼𝗺𝗺𝗮𝗻𝗱𝘀: %totalfeatures 
-┃✰│
-┃✰╰──────────────
-╰━━━━━━━━━━━━━━━┈⊷
- *©ＳＴＡＲ-ＭＤ-Ｖ２*
-
-  %readmore`.trimStart(),
+before: `╭─┉┉┉┉┈◈ *BOT INFO* ◈┈┉┉┉┉┉𓆩ꨄ︎𓆪
+ ⁝ 📛 *Name:* ${global.botname}
+ ⁝ 🧮 *Total:* ${totalf} + Features
+ ⁝ 💠 *Version:* V1.4.3
+ ⁝ 🤏 *Prefix:* Multi Prefix 
+ ⁝ 👨‍💻 *Developer:* ${global.owner}
+╰┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉𓆩ꨄ︎𓆪
+%readmore`.trimStart(),
   header: '╭─┉┉┈◈ *%category* ◈┈┉┉𓆩ꨄ︎𓆪 ',
   body: '┇ ☆  %cmd',
   footer: '╰┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉𓆩ꨄ︎𓆪\n',
-   after: `©𝚂𝚃𝙰𝚁-𝙼𝙳-𝚅𝟸`,
+   after: `*Made by ♡ ${global.owner}*`,
   }
 
 export default handler;
@@ -171,7 +161,7 @@ let msg = generateWAMessageFromContent(m.chat, {
             buttons: [
               {
                 "name": "quick_reply",
-                "buttonParamsJson": "{\"display_text\":\"Owner\",\"id\":\"/owner\"}{\"display_text\":\"Script \",\"id\":\"*script\"}{\"display_text\":\"Bot Speed 🚀\",\"id\":\"*ping\"}"
+                "buttonParamsJson": "{\"display_text\":\"Owner🪷\",\"id\":\"/owner\"}{\"display_text\":\"Script 🫣\",\"id\":\"/script\"}{\"display_text\":\"Bot Speed 🚀\",\"id\":\"/ping\"}"
               }
            ],
           })
