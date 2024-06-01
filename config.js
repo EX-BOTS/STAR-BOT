@@ -36,8 +36,7 @@ global.APIs = { // API Prefix
   akuari: 'https://api.akuari.my.id',
   akuari2: 'https://apimu.my.id',
   nrtm: 'https://fg-nrtm.ddns.net',
-  bg: 'http://bochil.ddns.net',
-  global.shizokeys = 'shizo'
+  bg: 'http://bochil.ddns.net', 
   fgmods: 'https://api-fgmods.ddns.net'
 }
 global.APIKeys = { // APIKey Here
@@ -63,7 +62,7 @@ global.Channel2 = 'https://whatsapp.com/channel/0029VaBcXo4JJhzW9c1uVD2X'
 global.Wa = 'https://wa.me/2347045035241'
 global.fglog = 'STAR.jpg' 
 global.thumb = fs.readFileSync('./STAR.jpg')
-
+global.shizokeys = 'shizo'
 
 
 global.wait = '*🕒 _STAR IS  LOADING WAIT..._*\n*▰▰▰▱▱▱▱▱ 💫*'
