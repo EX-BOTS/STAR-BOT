@@ -37,6 +37,7 @@ global.APIs = { // API Prefix
   akuari2: 'https://apimu.my.id',
   nrtm: 'https://fg-nrtm.ddns.net',
   bg: 'http://bochil.ddns.net',
+  global.shizokeys = 'shizo'
   fgmods: 'https://api-fgmods.ddns.net'
 }
 global.APIKeys = { // APIKey Here
