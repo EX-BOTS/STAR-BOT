@@ -7,7 +7,7 @@ let endpoint = `https://shizoapi.onrender.com/api/nsfw/pussy?apikey=${shizokeys}
 const response = await fetch(endpoint);
 if (response.ok) {
       const imageBuffer = await response.buffer();
-      await conn.sendFile(m.chat, imageBuffer, 'shizo.techie.error.png', msg, m, null, rpig);
+      await conn.sendFile(m.chat, imageBuffer, 'null);
     } else {
       throw bug
     }
