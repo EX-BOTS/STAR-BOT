@@ -215,18 +215,18 @@ import {
 
  function ucapan() {
   const time = moment.tz("Nigeria/Lagos").format("HH")
-  let res = "GM🌞"
+  let res = "🌞"
   if (time >= 4) {
-   res = "𝖦𝖬☀️"
+   res = "☀️"
   }
   if (time >= 10) {
-   res = "𝖭𝖮𝖮𝖭☀️"
+   res = "☀️"
   }
   if (time >= 15) {
-   res = "𝖤𝖵𝖤🌇"
+   res = "🌇"
   }
   if (time >= 18) {
-   res = "𝖭𝖨𝖳𝖤🌙"
+   res = "🌙"
   }
   return res
  }
