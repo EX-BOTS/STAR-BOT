@@ -52,6 +52,7 @@
         "aptoide-scraper": "^1.0.1",
         "awesome-phonenumber": "^3.4.0",
         "axios": "^1.4.0",
+        "brainly-scraper-v2": "^2.0.9",
         "mumaker": "latest",
         "canvacord": "^5.4.8",
         "cfonts": "^3.1.1",
