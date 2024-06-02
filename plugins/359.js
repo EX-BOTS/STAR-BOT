@@ -9,6 +9,15 @@ import { promises } from 'fs'
 import { join } from 'path'
 const time = moment.tz('Asia/Kolkata').format('HH')
 let wib = moment.tz('Asia/Kolkata').format('HH:mm:ss')
+const { downloadContentFromMessage,
+  WA_DEFAULT_EPHEMERAL,
+  proto, jid,
+  getContentType,
+  generateWAMessageContent,
+  generateWAMessageFromContent,                                                            BufferJSON,
+  prepareWAMessageMedia,
+  MessageType,
+  areJidsSameUser } = require('@whiskeysockets/baileys');
 //import db from '../lib/database.js'
 
 let handler = async (m, { conn, usedPrefix, command}) => {
