@@ -549,9 +549,16 @@ let str = `
 𝚂𝚃𝙰𝚁-𝙼𝙳-𝚅𝟸 𝙱𝚈 𝙴𝚇𝙲𝙴𝙻 𝙰𝙼𝙰𝙳𝙸`
 
 
-    conn.sendFile(m.chat, pp, 'perfil.jpg', str, m, null, rpyt)
-    m.react(done)
+    let rpyt = ""; // You can assign it a value or leave it as an empty string based on your requirements
 
+// Your main code here
+conn.on('chat-update', async (m) => {
+  if (!m.hasNewMessage) return;
+  let pp = await conn.getProfilePicture(m.sender);
+  let str = m.sender ? 's.whatsapp.net' : 'WhatsApp';
+  conn.sendFile(m.chat, pp, 'perfil.jpg', str, m, null, rpyt);
+  m.react(done);
+});
 }
 handler.help = ['main']
 handler.tags = ['group']
