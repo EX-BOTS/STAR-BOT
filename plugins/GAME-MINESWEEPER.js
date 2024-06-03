@@ -8,6 +8,7 @@ class Minesweeper {
     this.revealed = this.initializeRevealed();
     this.placeMines();
     this.calculateNumbers();
+    this.gameOver = false;
   }
 
   initializeBoard() {
@@ -53,8 +54,13 @@ class Minesweeper {
   }
 
   reveal(row, col) {
-    if (row < 0 || row >= this.rows || col < 0 || col >= this.cols || this.revealed[row][col]) return;
+    if (row < 0 || row >= this.rows || col < 0 || col >= this.cols || this.revealed[row][col] || this.gameOver) return;
     this.revealed[row][col] = true;
+    if (this.board[row][col] === 'M') {
+      this.gameOver = true;
+      this.revealAll();
+      return 'You hit a mine! Game over.';
+    }
     if (this.board[row][col] === 0) {
       const directions = [
         [-1, -1], [-1, 0], [-1, 1],
@@ -65,6 +71,11 @@ class Minesweeper {
         this.reveal(row + dx, col + dy);
       });
     }
+    return 'Keep going!';
+  }
+
+  revealAll() {
+    this.revealed = this.revealed.map(row => row.map(() => true));
   }
 
   display() {
@@ -87,14 +98,14 @@ const handler = async (m, { conn, command, text }) => {
     conn.reply(m.chat, 'Minesweeper game started!\n\n' + global.minesweeper.display(), m);
   } else if (command.startsWith('reveal')) {
     const [_, row, col] = command.split(' ');
-    global.minesweeper.reveal(parseInt(row), parseInt(col));
-    conn.reply(m.chat, global.minesweeper.display(), m);
+    const result = global.minesweeper.reveal(parseInt(row), parseInt(col));
+    conn.reply(m.chat, result + '\n\n' + global.minesweeper.display(), m);
   }
 };
 
-handler.help = ['start', 'reveal <row> <col>'];
+handler.help = ['mine', 'reveal <row> <col>'];
 handler.tags = ['game'];
-handler.command = ['start', 'reveal'];
+handler.command = ['start','mine','reveal'];
 handler.rowner = true;
 
 export default handler;
