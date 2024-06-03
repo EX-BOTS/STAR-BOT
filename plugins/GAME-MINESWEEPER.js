@@ -54,7 +54,9 @@ class Minesweeper {
   }
 
   reveal(row, col) {
-    if (row < 0 || row >= this.rows || col < 0 || col >= this.cols || this.revealed[row][col] || this.gameOver) return;
+    if (isNaN(row) || isNaN(col) || row < 0 || row >= this.rows || col < 0 || col >= this.cols || this.revealed[row][col] || this.gameOver) {
+      return 'Invalid move or game over.';
+    }
     this.revealed[row][col] = true;
     if (this.board[row][col] === 'M') {
       this.gameOver = true;
@@ -81,8 +83,8 @@ class Minesweeper {
   display() {
     const emojis = ['⬛', '1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'];
     const lines = ['0️⃣', '1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'];
-    return lines.map((_, rowIndex) => 
-      this.board[rowIndex].map((cell, colIndex) => 
+    return this.board.map((row, rowIndex) => 
+      row.map((cell, colIndex) => 
         this.revealed[rowIndex][colIndex] ? emojis[cell] : '⬜️').join('')
     ).join('\n');
   }
@@ -97,7 +99,7 @@ const handler = async (m, { conn, command, text }) => {
   if (command === 'start') {
     conn.reply(m.chat, 'Minesweeper game started!\n\n' + global.minesweeper.display(), m);
   } else if (command.startsWith('reveal')) {
-    const [_, row, col] = command.split(' ');
+    const [_, row, col] = text.split(' ');
     const result = global.minesweeper.reveal(parseInt(row), parseInt(col));
     conn.reply(m.chat, result + '\n\n' + global.minesweeper.display(), m);
   }
@@ -105,7 +107,7 @@ const handler = async (m, { conn, command, text }) => {
 
 handler.help = ['mine', 'reveal <row> <col>'];
 handler.tags = ['game'];
-handler.command = ['start','mine','reveal'];
+handler.command = ['mine', 'reveal'];
 handler.rowner = true;
 
 export default handler;
