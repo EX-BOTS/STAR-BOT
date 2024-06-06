@@ -1,4 +1,3 @@
-// Define the Minesweeper class
 class Minesweeper {
   constructor(rows, cols, mines) {
     this.rows = rows;
@@ -54,9 +53,19 @@ class Minesweeper {
   }
 
   reveal(row, col) {
-    if (isNaN(row) || isNaN(col) || row < 0 || row >= this.rows || col < 0 || col >= this.cols || this.revealed[row][col] || this.gameOver) {
-      return 'Invalid move or game over.';
+    if (isNaN(row) || isNaN(col)) {
+      return 'Invalid input. Row and column must be numbers.';
     }
+    if (row < 0 || row >= this.rows || col < 0 || col >= this.cols) {
+      return 'Invalid move. Row and column must be within the board boundaries.';
+    }
+    if (this.revealed[row][col]) {
+      return 'Invalid move. Cell already revealed.';
+    }
+    if (this.gameOver) {
+      return 'Game over. Start a new game.';
+    }
+
     this.revealed[row][col] = true;
     if (this.board[row][col] === 'M') {
       this.gameOver = true;
@@ -82,10 +91,9 @@ class Minesweeper {
 
   display() {
     const emojis = ['⬛', '1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'];
-    const lines = ['0️⃣', '1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'];
     return this.board.map((row, rowIndex) => 
       row.map((cell, colIndex) => 
-        this.revealed[rowIndex][colIndex] ? emojis[cell] : '⬜️').join('')
+        this.revealed[rowIndex][colIndex] ? (cell === 'M' ? '💣' : emojis[cell]) : '⬜️').join('')
     ).join('\n');
   }
 }
@@ -96,11 +104,27 @@ const handler = async (m, { conn, command, text }) => {
     global.minesweeper = new Minesweeper(8, 8, 10); // Create a new game with 8x8 board and 10 mines
   }
 
-  if (command === 'start') {
+  if (command === 'mine') {
     conn.reply(m.chat, 'Minesweeper game started!\n\n' + global.minesweeper.display(), m);
   } else if (command.startsWith('reveal')) {
-    const [_, row, col] = text.split(' ');
-    const result = global.minesweeper.reveal(parseInt(row), parseInt(col));
+    const args = text.split(' ');
+
+    // Check if the correct number of arguments is provided
+    if (args.length !== 3) {
+      conn.reply(m.chat, 'Usage: reveal <row> <col>\nExample: reveal 1 1', m);
+      return;
+    }
+
+    const rowNum = parseInt(args[1]);
+    const colNum = parseInt(args[2]);
+
+    // Check if parsed arguments are valid numbers
+    if (isNaN(rowNum) || isNaN(colNum)) {
+      conn.reply(m.chat, 'Please provide valid numbers for row and column.\nUsage: reveal <row> <col>\nExample: reveal 1 1', m);
+      return;
+    }
+
+    const result = global.minesweeper.reveal(rowNum, colNum);
     conn.reply(m.chat, result + '\n\n' + global.minesweeper.display(), m);
   }
 };
