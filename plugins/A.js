@@ -90,30 +90,32 @@ class Minesweeper {
   }
 
   display() {
-    const emojis = ['⬛', '1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣'];
-    const columnEmojis = ['0️⃣', '1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'];
-    let displayBoard = '  ';
-    for (let i = 0; i < this.cols; i++) {
-      displayBoard += columnEmojis[i + 1] + ' ';
-    }
-    displayBoard += '\n';
-    for (let row = 0; row < this.rows; row++) {
-      displayBoard += columnEmojis[row + 1] + ' ';
-      for (let col = 0; col < this.cols; col++) {
-        if (this.revealed[row][col]) {
-          displayBoard += this.board[row][col] === 'M' ? '💣 ' : emojis[this.board[row][col]] + ' ';
-        } else {
-          displayBoard += '⬜️ ';
-        }
-      }
-      displayBoard += '\n';
-    }
-    return displayBoard;
+    const emojis = ['⬛️', '1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟', '💣'];
+    return this.board.map((row, rowIndex) => 
+        row.map((cell, colIndex) => 
+            this.revealed[rowIndex][colIndex] ? (cell === 'M' ? emojis[11] : emojis[cell]) : '⬜️').join('')
+    ).join('\n');
   }
 }
 
-// Test Minesweeper class
-const game = new Minesweeper(8, 8, 10);
-console.log(game.display());
-console.log(game.reveal(0, 0)); // Change coordinates as needed for testing
-console.log(game.display());
+// Integrate Minesweeper with the bot
+const handler = async (m, { conn, command, text }) => {
+  if (!global.minesweeper) {
+    global.minesweeper = new Minesweeper(8, 8, 10); // Create a new game with 8x8 board and 10 mines
+  }
+
+  if (command === 'mine') {
+    conn.reply(m.chat, 'Minesweeper game started!\n\n' + global.minesweeper.display(), m);
+  } else if (command.startsWith('mine')) {
+    const [_, row, col] = text.split(' ');
+    const result = global.minesweeper.reveal(parseInt(row), parseInt(col));
+    conn.reply(m.chat, result + '\n\n' + global.minesweeper.display(), m);
+  }
+};
+
+handler.help = ['mine <row> <col>'];
+handler.tags = ['game'];
+handler.command = ['mine'];
+handler.rowner = true;
+
+export default handler;
